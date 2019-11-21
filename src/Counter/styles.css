@@ -1,0 +1,15 @@
+.controllers {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
+
+.controllers button {
+    background: orange;
+    font-size: 16px;
+    width: 200px;
+    height: 50px;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

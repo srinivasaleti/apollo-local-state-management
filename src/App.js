@@ -1,17 +1,34 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import ApolloClient, { HttpLink } from 'apollo-boost';
+import { resolvers, typeDefs } from './resolvers';
+import Couter from './Counter/Couter';
+
+const cache = new InMemoryCache()
 
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  cache,
+  link: new HttpLink(
+    {
+      uri: "localhost:4000"
+    }
+  ),
+  typeDefs,
+  resolvers,
 });
+
+cache.writeData({
+  data: {
+    counter: 0
+  },
+});
+
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div>
-        <h2>My first Apollo app 🚀</h2>
-      </div>
+      <Couter />
     </ApolloProvider>
   );
 }
