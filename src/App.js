@@ -5,6 +5,13 @@ import ApolloClient from 'apollo-boost';
 import { resolvers, typeDefs } from './resolvers';
 import Couter from './Counter/Couter';
 import Todos from './Todos/Todos';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import "./app.css"
 
 const cache = new InMemoryCache()
 
@@ -30,8 +37,26 @@ cache.writeData({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Couter />
-      <Todos />
+      <Router>
+        <div className="main">
+          <div className='sidebar'>
+            <Link to="/"><li>Counter</li></Link>
+            <Link to="/todos"><li>Todos</li></Link>
+          </div>
+
+          <div className='content'>
+            <Switch>
+              <Route path="/todos">
+                <Todos />
+              </Route>
+              <Route path="/">
+                <Couter />
+              </Route>
+            </Switch>
+          </div>
+        </div>
+      </Router>
+
     </ApolloProvider>
   );
 }

@@ -1,0 +1,25 @@
+.sidebar {
+    height: 100vh;
+    background: #719275;
+    width: 200px;
+    margin-right: 50px;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.sidebar li {
+    height: 50px;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 20px;   
+    color: #e2fb1c;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main {
+    height: 100vh;  
+    display: flex;
+}
