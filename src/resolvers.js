@@ -14,5 +14,20 @@ export const resolvers = {
             cache.writeData({ data: { counter: data.counter + variables.offset } });
             return null
         },
+        toggleTodo: (_root, variables, { cache, getCacheKey }) => {
+            const id = getCacheKey({ __typename: 'TODO', id: variables.id })
+
+            const fragment = gql`
+                  fragment completeTodo on TODO {
+                    completed
+                    text
+                  }
+                `;
+
+            const todo = cache.readFragment({ fragment, id });
+            const data = { ...todo, completed: !todo.completed };
+            cache.writeData({ id, data });
+            return null;
+        },
     },
 };
