@@ -1,6 +1,8 @@
 import React from 'react'
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import "./styles.css"
+import Todo from './Todo';
 
 const TODOS_QUERY = gql`
 query GetCounterValue {
@@ -13,11 +15,11 @@ query GetCounterValue {
 `
 
 export default function Todos() {
-    const result = useQuery(TODOS_QUERY)
-    console.log(result.data)
+    const { data: { todos = [] } = {} } = useQuery(TODOS_QUERY)
     return (
         <div>
-            Todos
+            <h1>Todos</h1>
+            {todos.map((todo, index) => <Todo key={index} todo={todo} />)}
         </div>
     )
 }
