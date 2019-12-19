@@ -1,8 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import ApolloClient from 'apollo-boost';
-import { resolvers, typeDefs } from './resolvers';
+import client from './GraphQL/config'
 import Couter from './Counter/Couter';
 import Todos from './Todos/Todos';
 import {
@@ -13,25 +11,6 @@ import {
 } from "react-router-dom";
 import "./app.css"
 import RandomNumber from './RandomNumber';
-
-const cache = new InMemoryCache()
-
-const client = new ApolloClient({
-  cache,
-  typeDefs,
-  resolvers,
-});
-
-const initialState = {
-  counter: 0,
-  randomNumber: 0,
-  todos: []
-}
-
-cache.writeData({
-  data: initialState,
-});
-
 
 function App() {
   return (
