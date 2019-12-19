@@ -1,10 +1,13 @@
 .sidebar {
     height: 100vh;
-    background: #719275;
+    background: #009688;
     width: 200px;
     margin-right: 50px;
     padding: 20px;
-    border-radius: 4px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
 }
 
 .sidebar li {
@@ -12,10 +15,11 @@
     list-style-type: none;
     font-weight: bold;
     font-size: 20px;   
-    color: #e2fb1c;
+    color: white;
 }
 
 .content {
+    margin-left: 300px;
     padding: 20px;
 }
 

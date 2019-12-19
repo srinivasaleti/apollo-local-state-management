@@ -36,11 +36,11 @@
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color:black;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px black;
   }
   
   input:checked + .slider:before {
@@ -60,15 +60,47 @@
 
   .todo {
     display: flex;
-    background: #ffc107;
+    background: #009688;
     justify-content: space-between;
     min-height: 30px;
     width: 1000px;
     padding: 20px;
+    color: white;
     border-radius: 5px;
+    margin-bottom: 20px;
   }
 
   .todo h2 {
     width: 500px;
     margin: 0px;
   }
+
+.add-todo {
+    width: 600px;
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.add-todo textarea {
+    height: 60px;
+    width: 500px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.add-todo button {
+    height: 50px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 20px;
+    background: #009688;
+    margin-top: 5px;
+    outline: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 14px;
+    color: white;
+}

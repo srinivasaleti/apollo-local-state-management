@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { GET_COUNTER } from './Counter/Couter';
+import { TODOS_QUERY } from './Todos/Todos';
 
 export const typeDefs = gql`
   extend type Query {
@@ -29,5 +30,14 @@ export const resolvers = {
             cache.writeData({ id, data });
             return null;
         },
-    },
-};
+        addTodo: (_root, variables, { cache, getCacheKey }) => {
+            const { todos = [] } = cache.readQuery({ query: TODOS_QUERY })
+            const newTodos = [
+                ...todos, {
+                    id: todos.length + 1, ...variables.todo, __typename: "TODO"
+                }]
+            cache.writeData({ data: { todos: newTodos } })
+            return null
+        },
+    }
+}

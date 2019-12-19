@@ -12,6 +12,7 @@ import {
   Link
 } from "react-router-dom";
 import "./app.css"
+import RandomNumber from './RandomNumber';
 
 const cache = new InMemoryCache()
 
@@ -21,16 +22,14 @@ const client = new ApolloClient({
   resolvers,
 });
 
+const initialState = {
+  counter: 0,
+  randomNumber: 0,
+  todos: []
+}
+
 cache.writeData({
-  data: {
-    counter: 0,
-    todos: [{
-      id: 1,
-      completed: false,
-      text: "TODO1",
-      __typename: "TODO"
-    }]
-  },
+  data: initialState,
 });
 
 
@@ -40,7 +39,8 @@ function App() {
       <Router>
         <div className="main">
           <div className='sidebar'>
-            <Link to="/"><li>Counter</li></Link>
+            <Link to="/"><li>RandomNumber</li></Link>
+            <Link to="/counter"><li>Counter</li></Link>
             <Link to="/todos"><li>Todos</li></Link>
           </div>
 
@@ -49,8 +49,11 @@ function App() {
               <Route path="/todos">
                 <Todos />
               </Route>
-              <Route path="/">
+              <Route path="/counter">
                 <Couter />
+              </Route>
+              <Route path="/">
+                <RandomNumber />
               </Route>
             </Switch>
           </div>
