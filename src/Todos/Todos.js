@@ -1,19 +1,9 @@
 import React from 'react'
-import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import "./styles.css"
 import Todo from './Todo';
 import AddTodo from './AddTodo';
-
-export const TODOS_QUERY = gql`
-query GetCounterValue {
-  todos @client {
-    id
-    completed
-    text
-  } 
-}
-`
+import { TODOS_QUERY } from '../GraphQL/Queries/todosQueries';
 
 export default function Todos() {
     const { data: { todos = [] } = {} } = useQuery(TODOS_QUERY)

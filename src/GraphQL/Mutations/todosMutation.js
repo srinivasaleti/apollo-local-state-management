@@ -1,5 +1,18 @@
 import gql from 'graphql-tag';
-import { TODOS_QUERY } from '../../Todos/Todos';
+import { TODOS_QUERY } from '../Queries/todosQueries';
+
+
+export const ADD_TODO_MUTATION = gql`
+    mutation AddTodo($todo: TODO!) {
+        addTodo(todo: $todo) @client
+    }
+`
+
+export const TOGGLE_TODO = gql`
+mutation ToggleTodo($id: Int!) {
+  toggleTodo(id: $id) @client
+}
+`;
 
 const TodoMutations = {
   toggleTodo: (_root, variables, { cache, getCacheKey }) => {

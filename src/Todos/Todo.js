@@ -1,12 +1,6 @@
-import React, { useState } from 'react'
-import gql from 'graphql-tag';
+import React from 'react'
 import { useMutation } from '@apollo/react-hooks';
-
-const TOGGLE_TODO = gql`
-  mutation ToggleTodo($id: Int!) {
-    toggleTodo(id: $id) @client
-  }
-`;
+import { TOGGLE_TODO } from '../GraphQL/Mutations/todosMutation';
 
 export default function Todo({ todo = {} }) {
     const [toggleTodo] = useMutation(TOGGLE_TODO, { variables: { id: todo.id } });

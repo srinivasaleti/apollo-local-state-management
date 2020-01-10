@@ -1,19 +1,8 @@
 import React from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 import styles from './styles.css'
-
-export const GET_COUNTER = gql`
-  query GetCounterValue {
-    counter @client
-  }
-`;
-
-const UPDATE_COUNTER = gql`
-  mutation updateCounter($offset: Number!) {
-    updateCounter(offset: $offset) @client
-  }
-`;
+import { GET_COUNTER } from '../GraphQL/Queries/counterQueries';
+import { UPDATE_COUNTER } from '../GraphQL/Mutations/counterMutation';
 
 export default function Couter() {
   const { data } = useQuery(GET_COUNTER);
