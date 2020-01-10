@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { TODOS_QUERY } from '../../Todos/Todos';
 
-const TodoResolvers = {
+const TodoMutations = {
   toggleTodo: (_root, variables, { cache, getCacheKey }) => {
     const id = getCacheKey({ __typename: 'TODO', id: variables.id })
 
@@ -28,4 +28,4 @@ const TodoResolvers = {
   },
 }
 
-export default TodoResolvers
+export default TodoMutations
